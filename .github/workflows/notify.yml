@@ -94,9 +94,11 @@ jobs:
 
           echo "Response: $RESPONSE"
 
-          # 성공 여부 확인
-          if echo "$RESPONSE" | grep -q '"id"'; then
+          # 성공 / 구독자 없음 / 실패 구분
+          if echo "$RESPONSE" | grep -q '"recipients"'; then
             echo "✅ Notification sent successfully"
+          elif echo "$RESPONSE" | grep -q "All included players are not subscribed"; then
+            echo "ℹ️ No subscribed users yet (아직 알림 권한 허용한 사용자가 없음) — 정상"
           else
             echo "❌ Notification failed"
             exit 1
