@@ -23,18 +23,6 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="icon-512.png">
 
-<!-- OneSignal Web Push (GitHub Pages sub-path: /ps-qingdao-2026/) -->
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "7afe8559-29f9-4312-9a93-22b1a2be4c8d",
-      serviceWorkerPath: "OneSignalSDKWorker.js",
-      serviceWorkerParam: { scope: "/ps-qingdao-2026/" }
-    });
-  });
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -3538,7 +3526,14 @@
     e.target.classList.toggle('zoomed');
   });
 
-  // OneSignal SDK가 자동으로 OneSignalSDKWorker.js를 등록합니다 (오프라인 캐싱 + 푸쉬 통합)
+  // PWA Service Worker 등록 (오프라인 캐싱)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('sw.js')
+        .then(function(reg) { console.log('SW registered:', reg.scope); })
+        .catch(function(err) { console.log('SW failed:', err); });
+    });
+  }
 </script>
 
 </body>
