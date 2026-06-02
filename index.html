@@ -23,13 +23,15 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="icon-512.png">
 
-<!-- OneSignal Web Push -->
+<!-- OneSignal Web Push (GitHub Pages sub-path: /ps-qingdao-2026/) -->
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
       appId: "7afe8559-29f9-4312-9a93-22b1a2be4c8d",
+      serviceWorkerPath: "OneSignalSDKWorker.js",
+      serviceWorkerParam: { scope: "/ps-qingdao-2026/" }
     });
   });
 </script>
