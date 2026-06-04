@@ -1,6 +1,8 @@
 # 개인 파일 (실수로 commit 방지)
 *.pdf
-*.jpeg
-*.jpg
+# 루트 폴더의 비행기 스크린샷·잡다한 이미지 차단
+/*.jpeg
+/*.jpg
+# 단, 아이콘 PNG는 OK
 !icon-*.png
-# 단, 우리 아이콘 PNG는 OK
+# guide 폴더 안의 jpg는 허용
