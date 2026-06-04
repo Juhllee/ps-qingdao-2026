@@ -59,7 +59,7 @@
     background: var(--bg);
     color: var(--dark);
     line-height: 1.55;
-    padding: env(safe-area-inset-top) 0 calc(72px + env(safe-area-inset-bottom)) 0;
+    padding: env(safe-area-inset-top) 0 calc(112px + env(safe-area-inset-bottom)) 0;
   }
 
   /* ===== Routie 통일 컬러 (cyan) — 모든 토글 ===== */
@@ -105,7 +105,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 64px;
+    height: 104px;
     background: white;
     border-top: 1px solid var(--gray-300);
     display: flex;
@@ -122,22 +122,23 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
-    padding: 8px 0;
+    gap: 6px;
+    padding: 14px 0;
     color: var(--gray-500);
     transition: color 0.2s;
     font-family: inherit;
+    position: relative;
   }
   .tab-btn:hover { color: var(--routie-main); }
   .tab-btn.active { color: var(--routie-main); }
-  .tab-btn.active .tab-icon { transform: scale(1.15); }
+  .tab-btn.active .tab-icon { transform: scale(1.12); }
   .tab-icon {
-    font-size: 22px;
+    font-size: 30px;
     line-height: 1;
     transition: transform 0.2s;
   }
   .tab-label {
-    font-size: 10.5px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: -0.2px;
   }
@@ -145,12 +146,11 @@
     content: "";
     position: absolute;
     top: 0;
-    width: 32px;
+    width: 36px;
     height: 3px;
     background: var(--routie-main);
     border-radius: 0 0 3px 3px;
   }
-  .tab-btn { position: relative; }
   .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px 80px; }
 
   /* HERO - Routie 디자인 (라이트 cyan) */
@@ -4181,10 +4181,6 @@
       // 모든 페이지 섹션 숨김
       document.querySelectorAll('[data-page]').forEach(function(el) {
         el.style.display = el.dataset.page === pageId ? '' : 'none';
-      });
-      // 해당 페이지의 모든 details 자동 열림 (빈공간 줄이기)
-      document.querySelectorAll('[data-page="' + pageId + '"] > details, details[data-page="' + pageId + '"]').forEach(function(el) {
-        if (el.tagName === 'DETAILS') el.setAttribute('open', '');
       });
       // 탭 active
       document.querySelectorAll('.tab-btn').forEach(function(btn) {
