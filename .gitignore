@@ -1,0 +1,6 @@
+# 개인 파일 (실수로 commit 방지)
+*.pdf
+*.jpeg
+*.jpg
+!icon-*.png
+# 단, 우리 아이콘 PNG는 OK
