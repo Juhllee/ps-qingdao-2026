@@ -58,8 +58,45 @@
     font-family: 'Pretendard', 'Pretendard Variable', 'Noto Sans KR', -apple-system, sans-serif;
     background: var(--bg);
     color: var(--dark);
-    line-height: 1.65;
-    padding: 0 0 70px 0; /* 하단 탭바 공간 확보 */
+    line-height: 1.55;
+    padding: env(safe-area-inset-top) 0 calc(72px + env(safe-area-inset-bottom)) 0;
+  }
+
+  /* ===== Routie 통일 컬러 (cyan) — 모든 토글 ===== */
+  .flight-summary,
+  .hotel-section-summary,
+  .itinerary-summary,
+  .food-summary,
+  .nas-summary,
+  .guidebook-summary,
+  .map-toggle-summary {
+    background: linear-gradient(135deg, #DFF6F9 0%, #BCEDF3 100%) !important;
+    border-left: 5px solid var(--routie-main) !important;
+  }
+  .flight-section .day-toggle,
+  .hotel-section .day-toggle,
+  .itinerary-section .day-toggle,
+  .food-section .day-toggle,
+  .nas-section .day-toggle,
+  .guidebook-section .day-toggle,
+  .map-toggle-section .day-toggle {
+    background: var(--routie-main) !important;
+    color: white !important;
+  }
+  .flight-title-text,
+  .hotel-section-title,
+  .itinerary-title-text,
+  .food-title-text,
+  .nas-title-text,
+  .guidebook-title,
+  .map-toggle-title {
+    color: var(--gray-900);
+  }
+  /* 페이지 전환 부드럽게 */
+  [data-page] { animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* BOTTOM TAB BAR (Routie 스타일) */
@@ -123,11 +160,11 @@
       radial-gradient(circle at 85% 80%, rgba(103,215,228,0.15) 0, transparent 40%),
       linear-gradient(135deg, #F9F9FB 0%, #DFF6F9 60%, #BCEDF3 100%);
     color: var(--gray-900);
-    padding: 22px 22px 18px;
+    padding: 12px 16px 14px;
     position: relative;
     overflow: hidden;
-    margin-bottom: 24px;
-    border-bottom: 2px solid var(--routie-main);
+    margin-bottom: 0;
+    border-radius: 0 0 20px 20px;
   }
   .hero::before {
     content: "✈";
@@ -3570,7 +3607,7 @@
   </details>
 
   <!-- GUIDEBOOK -->
-  <details class="guidebook-section" data-page="food">
+  <details class="guidebook-section" data-page="guidebook">
     <summary class="guidebook-summary">
       <span class="guidebook-title">📖 가이드북</span>
       <span class="guidebook-meta">칭다오 자유여행 가이드북 · 7개 챕터</span>
@@ -3633,7 +3670,7 @@
   </details>
 
   <!-- MAP -->
-  <details class="map-toggle-section" data-page="map">
+  <details class="map-toggle-section" data-page="schedule">
     <summary class="map-toggle-summary">
       <span class="map-toggle-title">🗺 지도로 보기</span>
       <span class="map-toggle-meta">호텔·Day 경로</span>
@@ -3813,9 +3850,9 @@
     <span class="tab-icon">🍽</span>
     <span class="tab-label">식당</span>
   </button>
-  <button class="tab-btn" data-tab="map">
-    <span class="tab-icon">🗺</span>
-    <span class="tab-label">지도</span>
+  <button class="tab-btn" data-tab="guidebook">
+    <span class="tab-icon">📖</span>
+    <span class="tab-label">가이드북</span>
   </button>
 </nav>
 
@@ -4136,7 +4173,7 @@
 
   // ===== BOTTOM TAB BAR + 페이지 전환 =====
   (function() {
-    const VALID_PAGES = ['home', 'schedule', 'hotel', 'food', 'map'];
+    const VALID_PAGES = ['home', 'schedule', 'hotel', 'food', 'guidebook'];
     const DEFAULT_PAGE = 'home';
 
     function setPage(pageId) {
@@ -4144,6 +4181,10 @@
       // 모든 페이지 섹션 숨김
       document.querySelectorAll('[data-page]').forEach(function(el) {
         el.style.display = el.dataset.page === pageId ? '' : 'none';
+      });
+      // 해당 페이지의 모든 details 자동 열림 (빈공간 줄이기)
+      document.querySelectorAll('[data-page="' + pageId + '"] > details, details[data-page="' + pageId + '"]').forEach(function(el) {
+        if (el.tagName === 'DETAILS') el.setAttribute('open', '');
       });
       // 탭 active
       document.querySelectorAll('.tab-btn').forEach(function(btn) {
