@@ -59,7 +59,7 @@
     background: var(--bg);
     color: var(--dark);
     line-height: 1.55;
-    padding: env(safe-area-inset-top) 0 calc(112px + env(safe-area-inset-bottom)) 0;
+    padding: env(safe-area-inset-top) 0 calc(80px + env(safe-area-inset-bottom) + 12px) 0;
   }
 
   /* ===== Routie 통일 컬러 (cyan) — 모든 토글 ===== */
@@ -102,16 +102,15 @@
   /* BOTTOM TAB BAR (Routie 스타일) */
   .tab-bar {
     position: fixed;
-    bottom: 0;
+    bottom: env(safe-area-inset-bottom);
     left: 0;
     right: 0;
-    height: 104px;
+    height: 80px;
     background: white;
     border-top: 1px solid var(--gray-300);
     display: flex;
     z-index: 100;
     box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
-    padding-bottom: env(safe-area-inset-bottom);
   }
   .tab-btn {
     flex: 1;
