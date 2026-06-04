@@ -1372,6 +1372,90 @@
     font-style: italic;
   }
 
+  /* ITINERARY SECTION (toggle) */
+  .itinerary-section {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .itinerary-section summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .itinerary-section summary::-webkit-details-marker { display: none; }
+  .itinerary-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border-left: 5px solid #16a34a;
+    transition: filter 0.2s;
+  }
+  .itinerary-section summary:hover .itinerary-summary { filter: brightness(0.97); }
+  .itinerary-title-text {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 22px;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .itinerary-meta {
+    flex: 1;
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 500;
+  }
+  .itinerary-section .day-toggle {
+    background: #16a34a;
+    color: white;
+  }
+  .itinerary-section[open] .day-toggle { transform: rotate(180deg); }
+  .itinerary-body { padding: 18px; }
+
+  /* MAP TOGGLE SECTION */
+  .map-toggle-section {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .map-toggle-section summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .map-toggle-section summary::-webkit-details-marker { display: none; }
+  .map-toggle-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border-left: 5px solid #2563eb;
+    transition: filter 0.2s;
+  }
+  .map-toggle-section summary:hover .map-toggle-summary { filter: brightness(0.97); }
+  .map-toggle-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 22px;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .map-toggle-meta {
+    flex: 1;
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 500;
+  }
+  .map-toggle-section .day-toggle {
+    background: #2563eb;
+    color: white;
+  }
+  .map-toggle-section[open] .day-toggle { transform: rotate(180deg); }
+  .map-toggle-body { padding: 18px; }
+
   /* FOOD SECTION */
   .food-section {
     background: white;
@@ -2588,7 +2672,13 @@
   </details>
 
   <!-- ITINERARY -->
-  <h2 class="section-title">📍 데일리 일정 (4박 5일)</h2>
+  <details class="itinerary-section">
+    <summary class="itinerary-summary">
+      <span class="itinerary-title-text">📍 데일리 일정</span>
+      <span class="itinerary-meta">4박 5일 · Day 1~5</span>
+      <span class="day-toggle">▼</span>
+    </summary>
+    <div class="itinerary-body">
 
   <!-- DAY 1 -->
   <details class="day day-1">
@@ -2693,6 +2783,9 @@
       <div class="item"><div class="time">12:30</div><div class="what"><strong>✈️ 준 — 칭다오→김해 출발</strong></div></div>
       <div class="item"><div class="time">13:30</div><div class="what"><strong>✈️ 준희·창욱·경덕·남준·남준♥ — 칭다오→인천 SC4615 출발</strong><div class="desc">인천 15:45 도착</div></div></div>
       <div class="item"><div class="time">14:35</div><div class="what"><strong>✈️ 석환 — 칭다오→상하이(SHA) 출발</strong><div class="desc">훙차오 T2 16:15 도착</div></div></div>
+    </div>
+  </details>
+
     </div>
   </details>
 
@@ -3177,7 +3270,13 @@
   </details>
 
   <!-- MAP -->
-  <h2 class="section-title">🗺 지도로 보기</h2>
+  <details class="map-toggle-section">
+    <summary class="map-toggle-summary">
+      <span class="map-toggle-title">🗺 지도로 보기</span>
+      <span class="map-toggle-meta">호텔·Day 경로</span>
+      <span class="day-toggle">▼</span>
+    </summary>
+    <div class="map-toggle-body">
   <div class="map-section">
     <div class="map-controls">
       <div class="control-group">
@@ -3313,6 +3412,9 @@
       </svg>
     </div>
   </div>
+
+    </div>
+  </details>
 
 </div>
 
