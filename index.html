@@ -1372,6 +1372,199 @@
     font-style: italic;
   }
 
+  /* GUIDEBOOK SECTION (toggle) */
+  .guidebook-section {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .guidebook-section summary { list-style: none; cursor: pointer; }
+  .guidebook-section summary::-webkit-details-marker { display: none; }
+  .guidebook-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    background: linear-gradient(135deg, #fdf4ff, #fae8ff);
+    border-left: 5px solid #a855f7;
+    transition: filter 0.2s;
+  }
+  .guidebook-section summary:hover .guidebook-summary { filter: brightness(0.97); }
+  .guidebook-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 22px;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .guidebook-meta {
+    flex: 1;
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 500;
+  }
+  .guidebook-section .day-toggle { background: #a855f7; color: white; }
+  .guidebook-section[open] .day-toggle { transform: rotate(180deg); }
+  .guidebook-body { padding: 18px; }
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .chapter-card {
+    background: white;
+    border: 1px solid #e9d5ff;
+    border-radius: 14px;
+    padding: 16px 14px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+  }
+  .chapter-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(168,85,247,0.18);
+    border-color: #a855f7;
+  }
+  .chapter-icon { font-size: 32px; margin-bottom: 4px; }
+  .chapter-title { font-size: 15px; font-weight: 800; color: var(--dark); }
+  .chapter-sub {
+    font-size: 10px;
+    font-weight: 700;
+    color: #a855f7;
+    letter-spacing: 0.5px;
+  }
+  .chapter-desc {
+    font-size: 11.5px;
+    color: var(--gray);
+    line-height: 1.45;
+    margin-top: 4px;
+    flex: 1;
+  }
+  .chapter-count {
+    font-size: 10px;
+    color: #a855f7;
+    font-weight: 700;
+    margin-top: 4px;
+    align-self: flex-start;
+    background: #fae8ff;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .guidebook-source {
+    font-size: 11px;
+    color: var(--gray);
+    text-align: center;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed #e9d5ff;
+    font-style: italic;
+  }
+
+  /* CHAPTER MODAL */
+  .chapter-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+  .chapter-modal.open { display: flex; }
+  .cm-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); }
+  .cm-panel {
+    position: relative;
+    background: white;
+    border-radius: 16px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .cm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, #a855f7, #d946ef);
+    color: white;
+  }
+  .cm-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1;
+  }
+  .cm-close {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.25);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .cm-close:hover { background: rgba(255,255,255,0.4); }
+  .cm-slider {
+    position: relative;
+    background: #fafafa;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+  }
+  .cm-image {
+    max-width: 100%;
+    max-height: 75vh;
+    height: auto;
+    display: block;
+  }
+  .cm-prev, .cm-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .cm-prev { left: 12px; }
+  .cm-next { right: 12px; }
+  .cm-prev:hover, .cm-next:hover { background: rgba(0,0,0,0.85); }
+  .cm-prev:active, .cm-next:active { transform: translateY(-50%) scale(0.95); }
+  .cm-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: white;
+    border-top: 1px solid #f0f0f0;
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .cm-counter { font-weight: 700; color: var(--dark); }
+  .cm-hint { font-size: 10px; }
+  @media (max-width: 500px) {
+    .cm-hint { display: none; }
+    .cm-prev, .cm-next { width: 38px; height: 38px; font-size: 22px; }
+  }
+
   /* HOTEL SECTION (toggle wrapper) */
   .hotel-section {
     background: white;
@@ -2030,8 +2223,8 @@
   <!-- HOTEL: CONFIRMED (2팀 분리) -->
   <details class="hotel-section">
     <summary class="hotel-section-summary">
-      <span class="hotel-section-title">🏨 확정 숙소</span>
-      <span class="hotel-section-meta">2팀 분리 · A팀 7인 · B팀 부부</span>
+      <span class="hotel-section-title">🏨 숙소</span>
+      <span class="hotel-section-meta">A팀 7인 · B팀 부부 + 히스토리</span>
       <span class="day-toggle">▼</span>
     </summary>
     <div class="hotel-section-body">
@@ -2153,10 +2346,7 @@
     </div>
   </details>
 
-    </div>
-  </details>
-
-  <!-- HOTEL HISTORY (TOGGLE) -->
+  <!-- HOTEL HISTORY (toggle 안으로 이동) -->
   <details class="history-section">
     <summary class="history-summary">
       <span>📋 기존 숙소 히스토리 (검토했던 후보들 + 비교 분석)</span>
@@ -2722,6 +2912,9 @@
     </div>
   </details>
 
+    </div>
+  </details>
+
 <!-- ITINERARY -->
   <details class="itinerary-section">
     <summary class="itinerary-summary">
@@ -3124,8 +3317,8 @@
   <!-- NAS DAY-BY-DAY -->
   <details class="nas-section">
     <summary class="nas-summary">
-      <span class="nas-title-text">📍 Day별 단체 가능 추천</span>
-      <span class="nas-meta">루이투안 NAS 큐레이션 · 8인 가능성 ↑</span>
+      <span class="nas-title-text">📍 Day별 식당 추천 (NAS)</span>
+      <span class="nas-meta">루이투안 NAS 큐레이션 · 단체 가능</span>
       <span class="day-toggle">▼</span>
     </summary>
     <div class="nas-body">
@@ -3320,6 +3513,69 @@
     </div>
   </details>
 
+  <!-- GUIDEBOOK -->
+  <details class="guidebook-section">
+    <summary class="guidebook-summary">
+      <span class="guidebook-title">📖 가이드북</span>
+      <span class="guidebook-meta">칭다오 자유여행 가이드북 · 7개 챕터</span>
+      <span class="day-toggle">▼</span>
+    </summary>
+    <div class="guidebook-body">
+      <div class="chapter-grid">
+        <div class="chapter-card" data-chapter="theme">
+          <div class="chapter-icon">🎨</div>
+          <div class="chapter-title">테마 여행</div>
+          <div class="chapter-sub">THEME</div>
+          <div class="chapter-desc">맥주·옛 도심·산행·해안·웰니스·골프·해양 스포츠·학습·쇼핑·예술 10개 테마</div>
+          <div class="chapter-count">28 페이지</div>
+        </div>
+        <div class="chapter-card" data-chapter="bestday">
+          <div class="chapter-icon">🗺</div>
+          <div class="chapter-title">베스트 일정</div>
+          <div class="chapter-sub">THE BEST DAY COURSE</div>
+          <div class="chapter-desc">1일 클래식 / 2일 인생샷 / 3일 / 5일 여행 코스</div>
+          <div class="chapter-count">8 페이지</div>
+        </div>
+        <div class="chapter-card" data-chapter="tasty">
+          <div class="chapter-icon">🍜</div>
+          <div class="chapter-title">맛집·미식</div>
+          <div class="chapter-sub">TASTY QINGDAO</div>
+          <div class="chapter-desc">전통 명가 요리 · 현지 음식 · 추천 맛집 · 현지 시장</div>
+          <div class="chapter-count">10 페이지</div>
+        </div>
+        <div class="chapter-card" data-chapter="shopping">
+          <div class="chapter-icon">🛍</div>
+          <div class="chapter-title">쇼핑</div>
+          <div class="chapter-sub">SHOPPING</div>
+          <div class="chapter-desc">대형 쇼핑몰 · 기념품 · 특산품</div>
+          <div class="chapter-count">4 페이지</div>
+        </div>
+        <div class="chapter-card" data-chapter="cultural">
+          <div class="chapter-icon">🎭</div>
+          <div class="chapter-title">문화·축제</div>
+          <div class="chapter-sub">CULTURAL EVENT &amp; FESTIVAL</div>
+          <div class="chapter-desc">계절별 이벤트와 축제 정보</div>
+          <div class="chapter-count">3 페이지</div>
+        </div>
+        <div class="chapter-card" data-chapter="checklist">
+          <div class="chapter-icon">✅</div>
+          <div class="chapter-title">체크리스트</div>
+          <div class="chapter-sub">CHECK LIST &amp; INFORMATION</div>
+          <div class="chapter-desc">여행 준비 · 필수 정보 · 실용 팁</div>
+          <div class="chapter-count">3 페이지</div>
+        </div>
+        <div class="chapter-card" data-chapter="transport">
+          <div class="chapter-icon">🚇</div>
+          <div class="chapter-title">교통</div>
+          <div class="chapter-sub">TRANSPORTATION</div>
+          <div class="chapter-desc">공항·지하철·택시·DiDi 이용 가이드</div>
+          <div class="chapter-count">9 페이지</div>
+        </div>
+      </div>
+      <p class="guidebook-source">📕 출처: 칭다오시 문화관광국 발간 「칭다오 자유여행 가이드북」</p>
+    </div>
+  </details>
+
   <!-- MAP -->
   <details class="map-toggle-section">
     <summary class="map-toggle-summary">
@@ -3480,6 +3736,26 @@
       <img class="gm-image" alt="가이드북 페이지">
     </div>
     <p class="gm-note">📖 가이드북에서 발췌 · 이미지 클릭하면 확대됩니다</p>
+  </div>
+</div>
+
+<!-- CHAPTER MODAL (Guidebook chapters) -->
+<div class="chapter-modal" id="chapterModal" aria-hidden="true">
+  <div class="cm-overlay"></div>
+  <div class="cm-panel">
+    <div class="cm-header">
+      <h3 class="cm-title">챕터 제목</h3>
+      <button class="cm-close" aria-label="닫기">✕</button>
+    </div>
+    <div class="cm-slider">
+      <button class="cm-prev" aria-label="이전">‹</button>
+      <img class="cm-image" alt="">
+      <button class="cm-next" aria-label="다음">›</button>
+    </div>
+    <div class="cm-footer">
+      <span class="cm-counter">1 / 1</span>
+      <span class="cm-hint">← → 키 또는 좌우 버튼으로 이동</span>
+    </div>
   </div>
 </div>
 
@@ -3689,6 +3965,94 @@
   document.querySelector('#guideModal .gm-image').addEventListener('click', function(e) {
     e.target.classList.toggle('zoomed');
   });
+
+  // ===== CHAPTER MODAL (Guidebook) =====
+  (function() {
+    const CHAPTERS = {
+      theme:      { title: '🎨 THEME · 테마 여행', start: 6,  end: 33 },
+      bestday:    { title: '🗺 THE BEST DAY COURSE', start: 38, end: 45 },
+      tasty:      { title: '🍜 TASTY QINGDAO · 맛집',  start: 46, end: 55 },
+      shopping:   { title: '🛍 SHOPPING · 쇼핑',        start: 62, end: 65 },
+      cultural:   { title: '🎭 CULTURAL EVENT & FESTIVAL', start: 66, end: 68 },
+      checklist:  { title: '✅ CHECK LIST & INFORMATION',  start: 69, end: 71 },
+      transport:  { title: '🚇 TRANSPORTATION · 교통',   start: 72, end: 80 }
+    };
+
+    const modal = document.getElementById('chapterModal');
+    if (!modal) return;
+    const titleEl = modal.querySelector('.cm-title');
+    const imgEl = modal.querySelector('.cm-image');
+    const counterEl = modal.querySelector('.cm-counter');
+    const prevBtn = modal.querySelector('.cm-prev');
+    const nextBtn = modal.querySelector('.cm-next');
+
+    let pages = [];
+    let idx = 0;
+
+    function pageImg(n) {
+      // pdftoppm: p6-06.jpg / p70-70.jpg (자릿수 자동)
+      const padded = n < 10 ? '0' + n : String(n);
+      return 'guide/p' + n + '-' + padded + '.jpg';
+    }
+
+    function render() {
+      imgEl.src = pageImg(pages[idx]);
+      counterEl.textContent = (idx + 1) + ' / ' + pages.length;
+      prevBtn.style.opacity = idx === 0 ? '0.4' : '1';
+      nextBtn.style.opacity = idx === pages.length - 1 ? '0.4' : '1';
+    }
+
+    function open(chapterId) {
+      const ch = CHAPTERS[chapterId];
+      if (!ch) return;
+      titleEl.textContent = ch.title;
+      pages = [];
+      for (let p = ch.start; p <= ch.end; p++) pages.push(p);
+      idx = 0;
+      render();
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      imgEl.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.chapter-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        open(card.getAttribute('data-chapter'));
+      });
+    });
+    modal.querySelector('.cm-close').addEventListener('click', close);
+    modal.querySelector('.cm-overlay').addEventListener('click', close);
+    prevBtn.addEventListener('click', function() {
+      if (idx > 0) { idx--; render(); }
+    });
+    nextBtn.addEventListener('click', function() {
+      if (idx < pages.length - 1) { idx++; render(); }
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft' && idx > 0) { idx--; render(); }
+      else if (e.key === 'ArrowRight' && idx < pages.length - 1) { idx++; render(); }
+    });
+    // 터치 스와이프
+    let touchStartX = 0;
+    modal.querySelector('.cm-slider').addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    modal.querySelector('.cm-slider').addEventListener('touchend', function(e) {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) < 40) return;
+      if (dx > 0 && idx > 0) { idx--; render(); }
+      else if (dx < 0 && idx < pages.length - 1) { idx++; render(); }
+    });
+  })();
 
   // PWA Service Worker 등록 (오프라인 캐싱)
   if ('serviceWorker' in navigator) {
