@@ -1372,6 +1372,48 @@
     font-style: italic;
   }
 
+  /* HOTEL SECTION (toggle wrapper) */
+  .hotel-section {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .hotel-section summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  .hotel-section summary::-webkit-details-marker { display: none; }
+  .hotel-section-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 22px;
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+    border-left: 5px solid #dc2626;
+    transition: filter 0.2s;
+  }
+  .hotel-section summary:hover .hotel-section-summary { filter: brightness(0.97); }
+  .hotel-section-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 22px;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .hotel-section-meta {
+    flex: 1;
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 500;
+  }
+  .hotel-section .day-toggle {
+    background: #dc2626;
+    color: white;
+  }
+  .hotel-section[open] .day-toggle { transform: rotate(180deg); }
+  .hotel-section-body { padding: 18px; }
+
   /* ITINERARY SECTION (toggle) */
   .itinerary-section {
     background: white;
@@ -1849,8 +1891,150 @@
 
 <div class="wrap">
 
+  <!-- FLIGHT SCHEDULE -->
+  <details class="flight-section">
+    <summary class="flight-summary">
+      <span class="flight-title-text">✈️ 비행기 일정</span>
+      <span class="flight-meta">6인 · 각자 출발지</span>
+      <span class="day-toggle">▼</span>
+    </summary>
+    <div class="flight-grid">
+    <div class="flight-card flight-b">
+      <div class="fc-head">
+        <div class="fc-name">창욱 · 준희</div>
+        <div class="fc-airline">산둥항공 (SC)</div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag depart">가는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>16:45</strong> ICN <span class="fc-arrow">→</span> <strong>17:25</strong> TAO</div>
+          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">SC4616</span></div>
+        </div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag return">오는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>13:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:45</strong> ICN</div>
+          <div class="fc-meta">7/20 (월) · 1시간 15분 · 직항 · <span class="fc-flight">SC4615</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card flight-a">
+      <div class="fc-head">
+        <div class="fc-name">준</div>
+        <div class="fc-airline">에어부산</div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag depart">가는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>10:30</strong> PUS <span class="fc-arrow">→</span> <strong>11:35</strong> TAO</div>
+          <div class="fc-meta">7/16 (목) · 2시간 5분 · 직항</div>
+        </div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag return">오는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>12:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:30</strong> PUS</div>
+          <div class="fc-meta">7/20 (월) · 2시간 · 직항</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card flight-c">
+      <div class="fc-head">
+        <div class="fc-name">경덕</div>
+        <div class="fc-airline">산둥항공 (SC)</div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag depart">가는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>21:45</strong> ICN <span class="fc-arrow">→</span> <strong>22:20</strong> TAO</div>
+          <div class="fc-meta">7/16 (목) · 1시간 35분 · 직항</div>
+        </div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag return">오는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>13:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:45</strong> ICN</div>
+          <div class="fc-meta">7/20 (월) · 1시간 15분 · 직항</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card flight-e">
+      <div class="fc-head">
+        <div class="fc-name">재영 · 재영♥</div>
+        <div class="fc-airline">대한항공 (KE)</div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag depart">가는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>13:05</strong> ICN <span class="fc-arrow">→</span> <strong>13:45</strong> TAO</div>
+          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">KE</span></div>
+        </div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag return">오는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>14:55</strong> TAO <span class="fc-arrow">→</span> <strong>17:40</strong> ICN</div>
+          <div class="fc-meta">7/19 (일) · 1시간 45분 · 직항 · <span class="fc-flight">KE</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card flight-d">
+      <div class="fc-head">
+        <div class="fc-name">석환</div>
+        <div class="fc-airline">산둥항공 (SC) · 보잉 737-800</div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag depart">가는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>10:15</strong> SHA <span class="fc-arrow">→</span> <strong>11:55</strong> TAO</div>
+          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">SC4660</span> · 훙차오 T2</div>
+        </div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag return">오는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>14:35</strong> TAO <span class="fc-arrow">→</span> <strong>16:15</strong> SHA</div>
+          <div class="fc-meta">7/20 (월) · 1시간 40분 · 직항 · 훙차오 T2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flight-card flight-b">
+      <div class="fc-head">
+        <div class="fc-name">남준 · 남준♥</div>
+        <div class="fc-airline">산둥항공 (SC) · 준희·창욱과 동일 비행기</div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag depart">가는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>16:45</strong> ICN <span class="fc-arrow">→</span> <strong>17:25</strong> TAO</div>
+          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">SC4616</span></div>
+        </div>
+      </div>
+      <div class="fc-row">
+        <span class="fc-tag return">오는편</span>
+        <div class="fc-leg">
+          <div class="fc-time"><strong>13:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:45</strong> ICN</div>
+          <div class="fc-meta">7/20 (월) · 1시간 15분 · 직항 · <span class="fc-flight">SC4615</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </details>
+
   <!-- HOTEL: CONFIRMED (2팀 분리) -->
-  <h2 class="section-title">🏨 확정 숙소 (2팀)</h2>
+  <details class="hotel-section">
+    <summary class="hotel-section-summary">
+      <span class="hotel-section-title">🏨 확정 숙소</span>
+      <span class="hotel-section-meta">2팀 분리 · A팀 7인 · B팀 부부</span>
+      <span class="day-toggle">▼</span>
+    </summary>
+    <div class="hotel-section-body">
 
   <!-- 메인 숙소: 샤오다오 8인실 (7인) -->
   <details class="confirmed-card">
@@ -1966,6 +2150,9 @@
         <a class="btn btn-primary" href="https://www.trip.com/m/hotels/detail/?hotelId=124450025&cityId=7&checkIn=2026-07-16&checkOut=2026-07-19" target="_blank" rel="noopener">🔗 Trip.com 예약 페이지</a>
         <a class="btn btn-secondary" href="https://maps.apple.com/?q=JI+Hotel+28+Hong+Kong+Middle+Road+Shinan+Qingdao" target="_blank" rel="noopener">🗺 지도에서 보기</a>
       </div>
+    </div>
+  </details>
+
     </div>
   </details>
 
@@ -2535,143 +2722,7 @@
     </div>
   </details>
 
-  <!-- FLIGHT SCHEDULE -->
-  <details class="flight-section">
-    <summary class="flight-summary">
-      <span class="flight-title-text">✈️ 비행기 일정</span>
-      <span class="flight-meta">6인 · 각자 출발지</span>
-      <span class="day-toggle">▼</span>
-    </summary>
-    <div class="flight-grid">
-    <div class="flight-card flight-b">
-      <div class="fc-head">
-        <div class="fc-name">창욱 · 준희</div>
-        <div class="fc-airline">산둥항공 (SC)</div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag depart">가는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>16:45</strong> ICN <span class="fc-arrow">→</span> <strong>17:25</strong> TAO</div>
-          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">SC4616</span></div>
-        </div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag return">오는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>13:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:45</strong> ICN</div>
-          <div class="fc-meta">7/20 (월) · 1시간 15분 · 직항 · <span class="fc-flight">SC4615</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flight-card flight-a">
-      <div class="fc-head">
-        <div class="fc-name">준</div>
-        <div class="fc-airline">에어부산</div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag depart">가는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>10:30</strong> PUS <span class="fc-arrow">→</span> <strong>11:35</strong> TAO</div>
-          <div class="fc-meta">7/16 (목) · 2시간 5분 · 직항</div>
-        </div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag return">오는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>12:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:30</strong> PUS</div>
-          <div class="fc-meta">7/20 (월) · 2시간 · 직항</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flight-card flight-c">
-      <div class="fc-head">
-        <div class="fc-name">경덕</div>
-        <div class="fc-airline">산둥항공 (SC)</div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag depart">가는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>21:45</strong> ICN <span class="fc-arrow">→</span> <strong>22:20</strong> TAO</div>
-          <div class="fc-meta">7/16 (목) · 1시간 35분 · 직항</div>
-        </div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag return">오는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>13:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:45</strong> ICN</div>
-          <div class="fc-meta">7/20 (월) · 1시간 15분 · 직항</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flight-card flight-e">
-      <div class="fc-head">
-        <div class="fc-name">재영 · 재영♥</div>
-        <div class="fc-airline">대한항공 (KE)</div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag depart">가는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>13:05</strong> ICN <span class="fc-arrow">→</span> <strong>13:45</strong> TAO</div>
-          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">KE</span></div>
-        </div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag return">오는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>14:55</strong> TAO <span class="fc-arrow">→</span> <strong>17:40</strong> ICN</div>
-          <div class="fc-meta">7/19 (일) · 1시간 45분 · 직항 · <span class="fc-flight">KE</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flight-card flight-d">
-      <div class="fc-head">
-        <div class="fc-name">석환</div>
-        <div class="fc-airline">산둥항공 (SC) · 보잉 737-800</div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag depart">가는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>10:15</strong> SHA <span class="fc-arrow">→</span> <strong>11:55</strong> TAO</div>
-          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">SC4660</span> · 훙차오 T2</div>
-        </div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag return">오는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>14:35</strong> TAO <span class="fc-arrow">→</span> <strong>16:15</strong> SHA</div>
-          <div class="fc-meta">7/20 (월) · 1시간 40분 · 직항 · 훙차오 T2</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flight-card flight-b">
-      <div class="fc-head">
-        <div class="fc-name">남준 · 남준♥</div>
-        <div class="fc-airline">산둥항공 (SC) · 준희·창욱과 동일 비행기</div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag depart">가는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>16:45</strong> ICN <span class="fc-arrow">→</span> <strong>17:25</strong> TAO</div>
-          <div class="fc-meta">7/16 (목) · 1시간 40분 · 직항 · <span class="fc-flight">SC4616</span></div>
-        </div>
-      </div>
-      <div class="fc-row">
-        <span class="fc-tag return">오는편</span>
-        <div class="fc-leg">
-          <div class="fc-time"><strong>13:30</strong> TAO <span class="fc-arrow">→</span> <strong>15:45</strong> ICN</div>
-          <div class="fc-meta">7/20 (월) · 1시간 15분 · 직항 · <span class="fc-flight">SC4615</span></div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </details>
-
-  <!-- ITINERARY -->
+<!-- ITINERARY -->
   <details class="itinerary-section">
     <summary class="itinerary-summary">
       <span class="itinerary-title-text">📍 데일리 일정</span>
