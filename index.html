@@ -1629,6 +1629,13 @@
     max-height: 75vh;
     height: auto;
     display: block;
+    cursor: zoom-in;
+    transition: transform 0.25s ease;
+    transform-origin: center center;
+  }
+  .cm-image.zoomed {
+    cursor: zoom-out;
+    transform: scale(1.8);
   }
   .cm-prev, .cm-next {
     position: absolute;
@@ -4123,10 +4130,17 @@
 
     function render() {
       imgEl.src = pageImg(pages[idx]);
+      imgEl.classList.remove('zoomed');
       counterEl.textContent = (idx + 1) + ' / ' + pages.length;
       prevBtn.style.opacity = idx === 0 ? '0.4' : '1';
       nextBtn.style.opacity = idx === pages.length - 1 ? '0.4' : '1';
     }
+
+    // 이미지 클릭 시 줌 toggle
+    imgEl.addEventListener('click', function(e) {
+      e.stopPropagation();
+      imgEl.classList.toggle('zoomed');
+    });
 
     function open(chapterId) {
       const ch = CHAPTERS[chapterId];
