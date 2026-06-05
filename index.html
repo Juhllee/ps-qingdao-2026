@@ -59,7 +59,7 @@
     background: var(--bg);
     color: var(--dark);
     line-height: 1.55;
-    padding: env(safe-area-inset-top) 0 calc(80px + env(safe-area-inset-bottom) + 12px) 0;
+    padding: env(safe-area-inset-top) 0 calc(72px + env(safe-area-inset-bottom) + 12px) 0;
   }
 
   /* ===== Routie 통일 컬러 (cyan) — 모든 토글 ===== */
@@ -102,15 +102,16 @@
   /* BOTTOM TAB BAR (Routie 스타일) */
   .tab-bar {
     position: fixed;
-    bottom: env(safe-area-inset-bottom);
+    bottom: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: calc(72px + env(safe-area-inset-bottom));
     background: white;
     border-top: 1px solid var(--gray-300);
     display: flex;
     z-index: 100;
     box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+    padding-bottom: env(safe-area-inset-bottom);
   }
   .tab-btn {
     flex: 1;
@@ -161,7 +162,134 @@
   }
   .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px 80px; }
 
-  /* HERO - Routie 디자인 (라이트 cyan) */
+  /* HOME HERO (레퍼런스 스타일 — 라이트 + 카드 그리드) */
+  .home-hero {
+    background: linear-gradient(180deg, #F0FBFC 0%, #FAFBFD 60%);
+    padding: 24px 18px 28px;
+    border-radius: 0 0 28px 28px;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .home-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .home-greeting { flex: 1; }
+  .home-eyebrow {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--routie-main);
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .home-headline {
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 800;
+    line-height: 1.25;
+    color: #0F2952;
+    letter-spacing: -0.6px;
+  }
+  .home-plane {
+    font-size: 60px;
+    opacity: 0.18;
+    line-height: 1;
+    transform: rotate(-20deg);
+    color: var(--routie-main);
+    margin-top: -10px;
+  }
+  .home-section { margin-top: 22px; }
+  .home-section-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--gray-700);
+    letter-spacing: -0.2px;
+    margin-bottom: 10px;
+  }
+  .home-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .home-card {
+    border-radius: 16px;
+    padding: 14px 12px;
+    color: white;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+  .hc-pink { background: linear-gradient(135deg, #FB7185 0%, #F472B6 100%); }
+  .hc-mint { background: linear-gradient(135deg, #34D399 0%, #2DD4BF 100%); }
+  .hc-blue { background: linear-gradient(135deg, #34C9DA 0%, #06B6D4 100%); }
+  .hc-tag {
+    font-size: 10px;
+    font-weight: 700;
+    background: rgba(255,255,255,0.3);
+    backdrop-filter: blur(8px);
+    padding: 3px 8px;
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .hc-title {
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin-top: auto;
+  }
+  .hc-sub { font-size: 11px; font-weight: 600; opacity: 0.85; }
+  .hc-foot { font-size: 10px; font-weight: 600; opacity: 0.85; margin-top: 4px; }
+
+  .home-crew {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .hc-chip {
+    background: white;
+    color: var(--gray-900);
+    font-weight: 700;
+    font-size: 12px;
+    padding: 6px 13px;
+    border-radius: 999px;
+    border: 1.5px solid var(--routie-40);
+    box-shadow: 0 2px 5px rgba(52,201,218,0.08);
+  }
+  .hc-chip-pink {
+    background: #FFF1F2;
+    color: #E11D48;
+    border-color: #FECDD3;
+  }
+
+  .home-weather {
+    margin-top: 0;
+    padding: 0;
+  }
+  .home-weather .w-day {
+    background: white;
+    border: 1.5px solid var(--routie-40);
+    border-radius: 14px;
+    padding: 8px 6px;
+    min-width: 0;
+    flex: 1;
+    box-shadow: 0 2px 6px rgba(52,201,218,0.08);
+  }
+  .home-weather .w-day .w-date {
+    font-size: 10px;
+    color: var(--gray-700);
+  }
+  .home-weather .w-day .w-date span { color: var(--gray-500); }
+  .home-weather .w-day .w-icon { font-size: 20px; margin: 4px 0; }
+  .home-weather .w-day .w-temp { font-size: 11px; color: #0F2952; font-weight: 800; }
+
+  /* HERO - Routie 디자인 (라이트 cyan) - 이전 헤더 (사용 안 함) */
   .hero {
     background:
       radial-gradient(circle at 15% 20%, rgba(52,201,218,0.18) 0, transparent 45%),
@@ -2167,20 +2295,54 @@
 </head>
 <body>
 
-<header class="hero" data-page="home">
-  <div class="hero-frame">
-    <h1>칭다오 맥주축제 원정대 <span class="beer-icon">🍺</span></h1>
-    <p class="sub">2026.07.16 → 07.20 4박 5일</p>
-    <div class="badges">
-      <span class="badge">👨‍👨‍👦‍👦 9인 (2팀 분리)</span>
-      <span class="badge">🏨 샤오다오 8인실 + JI Hotel</span>
-      <span class="badge">🇨🇳 칭다오 (TAO)</span>
-      <span class="badge">🍻 축제 개막일</span>
+<header class="home-hero" data-page="home">
+  <div class="home-top">
+    <div class="home-greeting">
+      <p class="home-eyebrow">WELCOME ABOARD ✈</p>
+      <h1 class="home-headline">칭다오로<br>떠날 준비됐나요?</h1>
     </div>
-    <div class="crew">
-      <span>준희</span><span>준</span><span>창욱</span><span>경덕</span><span>남준</span><span>남준♥</span><span>석환</span><span class="crew-set">재영</span><span class="crew-set">재영♥</span>
+    <div class="home-plane">✈</div>
+  </div>
+
+  <div class="home-section">
+    <p class="home-section-label">이번 여행 ✨</p>
+    <div class="home-cards">
+      <div class="home-card hc-pink">
+        <div class="hc-tag">🍺 축제</div>
+        <div class="hc-title">맥주축제<br>개막일 적중</div>
+        <div class="hc-foot">7/18 개막</div>
+      </div>
+      <div class="home-card hc-mint">
+        <div class="hc-tag">📅 일정</div>
+        <div class="hc-title">4박 5일</div>
+        <div class="hc-foot">7/16 → 7/20</div>
+      </div>
+      <div class="home-card hc-blue">
+        <div class="hc-tag">🇨🇳 도시</div>
+        <div class="hc-title">칭다오<br><span class="hc-sub">TAO</span></div>
+        <div class="hc-foot">山东省</div>
+      </div>
     </div>
-    <div class="weather-strip">
+  </div>
+
+  <div class="home-section">
+    <p class="home-section-label">크루 👥 9인</p>
+    <div class="home-crew">
+      <span class="hc-chip">준희</span>
+      <span class="hc-chip">준</span>
+      <span class="hc-chip">창욱</span>
+      <span class="hc-chip">경덕</span>
+      <span class="hc-chip">남준</span>
+      <span class="hc-chip">남준♥</span>
+      <span class="hc-chip">석환</span>
+      <span class="hc-chip hc-chip-pink">재영</span>
+      <span class="hc-chip hc-chip-pink">재영♥</span>
+    </div>
+  </div>
+
+  <div class="home-section">
+    <p class="home-section-label">날씨 🌦</p>
+    <div class="weather-strip home-weather">
       <div class="w-day"><div class="w-date">7/16<span>목</span></div><div class="w-icon">☁️</div><div class="w-temp">28°/24°</div></div>
       <div class="w-day"><div class="w-date">7/17<span>금</span></div><div class="w-icon">🌧</div><div class="w-temp">27°/23°</div></div>
       <div class="w-day"><div class="w-date">7/18<span>토</span></div><div class="w-icon">🌧</div><div class="w-temp">28°/24°</div></div>
