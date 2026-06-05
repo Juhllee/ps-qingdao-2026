@@ -2208,6 +2208,22 @@
     transition: background 0.15s;
   }
   .nas-card .nlink:hover { background: #c41e3a; }
+  .nas-note-link {
+    display: block;
+    background: linear-gradient(135deg, #DFF6F9, #BCEDF3);
+    border: 1px solid var(--routie-40);
+    color: var(--routie-dark);
+    text-align: center;
+    padding: 11px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    transition: filter 0.15s, transform 0.15s;
+  }
+  .nas-note-link:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
   .nas-source {
     font-size: 11px;
     color: var(--gray);
@@ -3616,7 +3632,7 @@
       <span class="day-toggle">▼</span>
     </summary>
     <div class="nas-body">
-      <p class="nas-note">⚠️ NAS 카드에 좌석 정보가 없어, <strong>체인·고깃집·BBQ·大排档·라이브바</strong> 등 단체 수용 가능성 높은 곳을 선별했습니다. 정확한 8인 룸 여부는 디엔핑에서 확인 권장.</p>
+      <a class="nas-note-link" href="https://qd.ruib.synology.me/" target="_blank" rel="noopener">📡 루이투안 NAS 전체 보기 — qd.ruib.synology.me</a>
 
       <div class="nas-day">
         <h4 class="nas-day-h day1">📅 Day 1 (7/16 목) · 호텔 근처 (타이둥/시북구)</h4>
